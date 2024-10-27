@@ -13,12 +13,12 @@ import LinkButton from "@components/LinkButton.astro";
     <div class="not-found-wrapper">
       <h1>404</h1>
       <span aria-hidden="true">¯\_(ツ)_/¯</span>
-      <p>Page Not Found</p>
+      <p>Ummm, you're not supposed to be here...</p>
       <LinkButton
         href="/"
         className="my-6 text-lg underline decoration-dashed underline-offset-8"
       >
-        Go back home
+        Take me back!
       </LinkButton>
     </div>
   </main>
@@ -37,6 +37,6 @@ import LinkButton from "@components/LinkButton.astro";
     @apply text-9xl font-bold text-skin-accent;
   }
   .not-found-wrapper p {
-    @apply mt-4 text-2xl sm:text-3xl;
+    @apply mt-4 text-xl sm:text-xl;
   }
 </style>
