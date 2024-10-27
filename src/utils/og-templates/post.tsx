@@ -7,7 +7,7 @@ export default async (post: CollectionEntry<"blog">) => {
   return satori(
     <div
       style={{
-        background: "#fefbfb",
+        backgroundImage: `url(https://raw.githubusercontent.com/zenoix/zenoix-blog/refs/heads/main/public/og-background.jpg)`,
         width: "100%",
         height: "100%",
         display: "flex",
@@ -20,10 +20,9 @@ export default async (post: CollectionEntry<"blog">) => {
           position: "absolute",
           top: "-1px",
           right: "-1px",
-          border: "4px solid #000",
-          background: "#ecebeb",
+          background: "#11111b",
           opacity: "0.9",
-          borderRadius: "4px",
+          borderRadius: "12px",
           display: "flex",
           justifyContent: "center",
           margin: "2.5rem",
@@ -31,12 +30,10 @@ export default async (post: CollectionEntry<"blog">) => {
           height: "80%",
         }}
       />
-
       <div
         style={{
-          border: "4px solid #000",
-          background: "#fefbfb",
-          borderRadius: "4px",
+          background: "#1e1e2e",
+          borderRadius: "12px",
           display: "flex",
           justifyContent: "center",
           margin: "2rem",
@@ -52,10 +49,13 @@ export default async (post: CollectionEntry<"blog">) => {
             margin: "20px",
             width: "90%",
             height: "90%",
+            color: "transparent",
           }}
         >
           <p
             style={{
+              backgroundImage: `url(https://raw.githubusercontent.com/zenoix/zenoix-blog/refs/heads/main/public/og-background.jpg)`,
+              backgroundClip: "text",
               fontSize: 72,
               fontWeight: "bold",
               maxHeight: "84%",
@@ -74,7 +74,14 @@ export default async (post: CollectionEntry<"blog">) => {
             }}
           >
             <span>
-              by{" "}
+              <span
+                style={{
+                  backgroundImage: `url(https://raw.githubusercontent.com/zenoix/zenoix-blog/refs/heads/main/public/og-background.jpg)`,
+                  backgroundClip: "text",
+                }}
+              >
+                by{" "}
+              </span>
               <span
                 style={{
                   color: "transparent",
@@ -82,12 +89,26 @@ export default async (post: CollectionEntry<"blog">) => {
               >
                 "
               </span>
-              <span style={{ overflow: "hidden", fontWeight: "bold" }}>
+              <span
+                style={{
+                  backgroundImage: `url(https://raw.githubusercontent.com/zenoix/zenoix-blog/refs/heads/main/public/og-background.jpg)`,
+                  backgroundClip: "text",
+                  overflow: "hidden",
+                  fontWeight: "bold",
+                }}
+              >
                 {post.data.author}
               </span>
             </span>
 
-            <span style={{ overflow: "hidden", fontWeight: "bold" }}>
+            <span
+              style={{
+                backgroundImage: `url(https://raw.githubusercontent.com/zenoix/zenoix-blog/refs/heads/main/public/og-background.jpg)`,
+                backgroundClip: "text",
+                overflow: "hidden",
+                fontWeight: "bold",
+              }}
+            >
               {SITE.title}
             </span>
           </div>
