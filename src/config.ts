@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Jeff Wang",
   profile: "https://www.zenoix.com",
   desc: "A little blog where I post about topics I'm not an expert on.",
-  title: "Zenoix",
+  title: "Zenoix's Blog",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
