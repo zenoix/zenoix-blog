@@ -1,10 +1,10 @@
-# Zenoix Blog 
+# Zenoix Blog
 
 This README is still in progress.
 
 ## ✨ Feedback & Suggestions
 
-If you have any suggestions/feedback, feel free to open an issue or a pull request. 
+If you have any suggestions/feedback, feel free to open an issue or a pull request.
 
 ## 📜 License
 
