@@ -2,9 +2,9 @@ import type { Site, SocialObjects } from "./types";
 import type { GiscusProps } from "@giscus/react";
 
 export const SITE: Site = {
-  website: "https://zenoix-blog.pages.dev", // TODO: Update URL
+  website: "https://www.zenoix.com",
   author: "Jeff Wang",
-  profile: "https://zenoix-blog.pages.dev", // TODO: Update URL
+  profile: "https://www.zenoix.com",
   desc: "A little blog where I post about topics I'm not an expert on.",
   title: "Zenoix",
   ogImage: "astropaper-og.jpg",
