@@ -1,9 +1,9 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "", // replace this with your deployed domain
+  website: "https://zenoix-blog.pages.dev", // TODO: Update URL
   author: "Jeff Wang",
-  profile: "https://satnaing.dev/",
+  profile: "https://zenoix-blog.pages.dev", // TODO: Update URL
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
   title: "Zenoix",
   ogImage: "astropaper-og.jpg",
