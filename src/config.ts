@@ -4,7 +4,7 @@ export const SITE: Site = {
   website: "https://zenoix-blog.pages.dev", // TODO: Update URL
   author: "Jeff Wang",
   profile: "https://zenoix-blog.pages.dev", // TODO: Update URL
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  desc: "A little blog where I post about topics I'm not an expert on.",
   title: "Zenoix",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
