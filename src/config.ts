@@ -1,5 +1,4 @@
 import type { Site, SocialObjects } from "./types";
-import type { GiscusProps } from "@giscus/react";
 
 export const SITE: Site = {
   website: "https://www.zenoix.com",
@@ -154,17 +153,3 @@ export const SOCIALS: SocialObjects = [
     active: false,
   },
 ];
-
-export const GISCUS: GiscusProps = {
-  repo: "zenoix/zenoix-blog",
-  repoId: "R_kgDONGeS9Q",
-  category: "Announcements",
-  categoryId: "DIC_kwDONGeS9c4Cju7C",
-  mapping: "pathname",
-  strict: "0",
-  reactionsEnabled: "0",
-  emitMetadata: "0",
-  inputPosition: "top",
-  lang: "en",
-  loading: "lazy",
-};
