@@ -1,6 +1,6 @@
 ---
 title: How to Self Teach Yourself to Code for Free
-pubDatetime: 2024-10-28T09:46:32.851Z
+pubDatetime: 2024-10-28T23:14:38+13:00
 # modDatetime: Modified datetime in ISO 8601 format. (only add this property when a blog post is modified)
 # slug: Slug for the post. This field is optional but cannot be an empty string. default = slugified file name
 featured: true
