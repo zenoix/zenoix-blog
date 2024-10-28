@@ -1,34 +1,34 @@
 import type { Site, SocialObjects } from "./types";
 
 export const SITE: Site = {
-  website: "https://www.zenoix.com",
-  author: "Jeff Wang",
-  profile: "https://www.zenoix.com",
-  desc: "A little blog where I post about topics I'm not an expert in ... yet",
-  title: "Zenoix's Blog",
-  ogImage: "og-image.jpg",
-  lightAndDarkMode: true,
-  postPerIndex: 4,
-  postPerPage: 6,
-  scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  showArchives: true,
-  editPost: {
-    url: "https://github.com/zenoix/zenoix-blog/edit/main/src/content/blog",
-    text: "Suggest Changes",
-    appendFilePath: true,
-  },
+    website: "https://www.zenoix.com",
+    author: "Jeff Wang",
+    profile: "https://www.zenoix.com",
+    desc: "A little blog where I post about topics I'm not an expert in ... yet",
+    title: "Zenoix's Blog",
+    ogImage: "og-image.jpg",
+    lightAndDarkMode: true,
+    postPerIndex: 4,
+    postPerPage: 6,
+    scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
+    showArchives: true,
+    editPost: {
+        url: "https://github.com/zenoix/zenoix-blog/edit/main/src/content/blog",
+        text: "Suggest Changes",
+        appendFilePath: true,
+    },
 };
 
 export const LOCALE = {
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  langTag: ["en-EN"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+    lang: "en", // html lang code. Set this empty and default will be "en"
+    langTag: ["en-EN"], // BCP 47 Language Tags. Set this empty [] to use the environment default
 } as const;
 
 export const LOGO_IMAGE = {
-  enable: false,
-  svg: true,
-  width: 216,
-  height: 46,
+    enable: false,
+    svg: true,
+    width: 216,
+    height: 46,
 };
 
 export const SOCIALS: SocialObjects = [
