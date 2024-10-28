@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
+import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import remarkMath from "remark-math";
@@ -34,6 +35,7 @@ export default defineConfig({
       // For more themes, visit https://shiki.style/themes
       themes: { light: "catppuccin-latte", dark: "catppuccin-mocha" },
       wrap: true,
+            remarkAlert,
     },
   },
   vite: {
