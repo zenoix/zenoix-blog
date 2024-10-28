@@ -1,7 +1,7 @@
 ---
 title: Title of the post. required
 # author: Author of the post. default = SITE.author
-pubDatetime: 2024-10-28T04:57:46.279Z # Published datetime in ISO 8601 format (use new Date().toISOString()). required 
+pubDatetime: 1970-01-01T00:00:00.000Z # Published datetime in ISO 8601 format (use new Date().toISOString()). required 
 # modDatetime: Modified datetime in ISO 8601 format. (only add this property when a blog post is modified)
 # slug: Slug for the post. This field is optional but cannot be an empty string. default = slugified file name
 featured: false # Whether or not to display this post as featured. default = false
