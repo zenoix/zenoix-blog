@@ -1,7 +1,7 @@
 ---
 title: How to Self Teach Yourself to Code for Free
 pubDatetime: 2024-10-28T23:14:38+13:00
-# modDatetime: Modified datetime in ISO 8601 format. (only add this property when a blog post is modified)
+modDatetime: 2024-10-28T12:20:50Z
 # slug: Slug for the post. This field is optional but cannot be an empty string. default = slugified file name
 featured: true
 draft: false
@@ -95,4 +95,6 @@ That being said, here are some of our suggestions if you're still unsure:
 
 >[!NOTE]
 > Note that these can be done at any time to supplement your learning. They do not need to be done after you've worked on projects.
+
+Lastly, if you've gotten this far, congrats. I wouldn't have expected anyone to read something I wrote on the internet. If you want more personalised advice on how to get started with learning to code, feel free to reach out to me by email which you can find at the bottom of the page or on the home page. Just let me know you're coming from this blog post :)
 
