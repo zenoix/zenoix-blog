@@ -1,5 +1,5 @@
 ---
-title: How to Self Teach Yourself to Code for Free
+title: How to Become a Self-Taught Coder for Free
 pubDatetime: 2024-10-28T23:14:38+13:00
 modDatetime: 2024-10-28T12:20:50Z
 # slug: Slug for the post. This field is optional but cannot be an empty string. default = slugified file name
@@ -11,7 +11,7 @@ tags:
 description: Countless people have asked me "How do I get started with learning how to code?", so I decided to write up a comprehensive guide on how to do just that. I go through how to teach yourself to code completely for free when you don't know what you want to use code for or you don't know where to start.
 ---
 
-![Photo of a sign saying "One Way"](@assets/images/how-to-self-teach-coding/banner.jpg)
+![Photo of a sign saying "One Way"](@assets/images/become-a-self-taught-coder/banner.jpg)
 
 Countless people have asked me something along the lines of:
 
