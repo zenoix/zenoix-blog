@@ -23,9 +23,11 @@ Coding notebooks (like Jupyter notebooks) are a tool for people to combine code 
 With a notebook, you can write code in code "cells" and see the outputs of those cells when they're run right underneath the cell. 
 
 <!-- TODO: Insert image of a notebook code example -->
+![Code running in a notebook](@assets/images/why-i-dont-use-code-notebooks/outputs.jpg)
 
 Commonly, these are interwoven with "text blocks" where text or markdown is written. This allows for an interactive environment to write code, see outputs, document logic, and tell stories all in one place.
 
+![Code running in a notebook](@assets/images/why-i-dont-use-code-notebooks/code-output-text.jpg)
 <!-- TODO: Insert image of a notebook example with code and text -->
 
 The level of interactivity, especially for data exploration and data visualisations, and supposedly ease of use are just a few reasons why they're so popular. 
