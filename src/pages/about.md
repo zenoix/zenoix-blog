@@ -23,6 +23,7 @@ As you might be able to tell, I like living in the terminal when I code. You can
 
 I use NixOS on all my personal devices and Ubuntu+Nix+Home-manager on my work laptop (they don't allow anything other than Windows sadge). That allows my configurations to be as reproducible and transferable as they can.
 
-My favourite language to write is Golang, but I use Python the most, and that's what I'm most comfortable with.
+My favourite language to write is Golang, but I use Python most, and that's what I'm most comfortable with.
 
 Lastly, when I'm not coding, I enjoy eating delicious food, drinking tea, playing video games, exercising, watching anime, and learning 日本語.
+
