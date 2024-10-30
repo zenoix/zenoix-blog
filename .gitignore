@@ -31,5 +31,6 @@ pnpm-debug.log*
 !.yarn/versions
 .pnp.*
 
-# direnv
+# development environment
 .direnv/
+.devenv
