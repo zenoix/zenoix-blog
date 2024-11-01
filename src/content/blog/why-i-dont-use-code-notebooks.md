@@ -67,7 +67,7 @@ This causes frustrating situations, especially for prototyping where the code ch
 
 Another situation that occurs more often than you'd think is when a cell is modified but was not run. This leads to the false impression that cells that run in the future will be affected by the changes or that the output of the code cell came from that update and not the previous code.
 
-<!-- Insert image of a modified by not run cell -->
+![Image showing modified but not run cell](@assets/images/why-i-dont-use-code-notebooks/state.jpg)
 
 All these lead to a not very scientific data science project. On the other hand, every time you run a Python file, the state is wiped clean. Therefore, you know that the only cause of bugs is the actual code and not the state. This confidence reduces the mental burden significantly during development, allowing you to worry about what's important. For beginners, this is a huge win.
 
@@ -103,8 +103,9 @@ That's when you combine the plain Python or R file with a REPL. I use [Vigemus' 
 
 The same thing can be done in VSCode by activating a Jupyter setting and using `shift+enter` to send the code over to the REPL.
 
-<!-- Add image of jupyter repl setting -->
-<!-- Add gif of vscode jupyter repl -->
+![Jupyter REPL VSCode Setting](@assets/images/why-i-dont-use-code-notebooks/vscode_jupyter_repl.jpg)
+
+![GIF showing VSCode Jupyter REPL](/assets/images/why-i-dont-use-code-notebooks/vscode_repl.gif)
     
 > But is that not the same as using a notebook?
 
