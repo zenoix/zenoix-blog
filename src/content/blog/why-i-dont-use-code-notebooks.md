@@ -1,11 +1,11 @@
 ---
 title: Why I Don’t Use Code Notebooks as a Data Scientist
 # author:
-pubDatetime: 
+pubDatetime: 2024-11-01T11:47:32.044Z
 # modDatetime: 
 # slug:
 featured: true
-draft: true
+draft: false
 tags:
   - data-science
   - tools
@@ -83,8 +83,7 @@ There are also a lot of software development basics that get lost when people pr
 
 This one is a bit of a joke, but it has always annoyed me. I could write five thousand lines of Python code and push that into a GitHub repo. BUT AS SOON AS I ADD ONE IPYNB FILE WITH ONE CODE CELL CONTAINING A SINGLE PRINT FUNCTION MY REPO BECOMES 99.999999% JUPYTER NOTEBOOK???!!!?! HUHHHH????!?!?!?!?!?!?!
 
-This is an exaggeration, but it makes me that angry. Thanks for coming to my TED talk.
-
+Obviously, that was an exaggeration, but it does makes me that angry. 
 
 ## So What Do I Use Instead?
 
@@ -97,7 +96,7 @@ However, you may be asking the following:
 
 That's when you combine the plain Python or R file with a REPL. I use [Vigemus' iron.nvim](https://github.com/Vigemus/iron.nvim) in Neovim to send bits of code at a time, like I am demonstrating below:
 
-![GIF showing Iron.nvim](@assets/images/why-i-dont-use-code-notebooks/iron.gif)
+![GIF showing Iron.nvim](/assets/images/why-i-dont-use-code-notebooks/iron.gif)
 
 > [!TIP]
 > My whole Neovim configuration can be found in my [GitHub repo](https://github.com/zenoix/walnut-environment). I might make a blog post on it in the future.
