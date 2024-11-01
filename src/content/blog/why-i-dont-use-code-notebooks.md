@@ -18,7 +18,7 @@ A large number of Python beginners and both professional and aspiring data scien
 > [!NOTE]
 > I am aware that notebooks have made it easier for those who came from other quantitative fields like physics, statistics, and engineering to get into coding. They most likely do not have the same software development background as someone from a software engineering background. My intention is not to gatekeep but to raise awareness of some of the disadvantages of notebooks.
 
-## Table of Contents
+## Table of contents
 
 ## What Are Notebooks and Why Do I Think People Use Them?
 
