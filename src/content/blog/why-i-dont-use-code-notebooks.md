@@ -60,7 +60,7 @@ Using notebooks makes it easier to forget basic software engineering best practi
 
 One of the most annoying aspects of notebooks is that it remembers the system's state.
 
-> [!INFO]
+> [!TIP]
 > This pretty much means that all variables and definitions are remembered throughout the lifetime of the kernel until the cells that assigned them are run again (overwriting them) or if the kernel is restarted (the state is lost).
 
 This causes frustrating situations, especially for prototyping where the code changes quickly and frequently. It is way too easy to get the wrong results or bugs to appear if you forget which cells have run before and the values of every variable. 
