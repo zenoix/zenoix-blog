@@ -1,4 +1,5 @@
 ---
+import { env } from "node:process";
 import { getCollection } from "astro:content";
 import Card from "@components/Card";
 import Footer from "@components/Footer.astro";
@@ -13,7 +14,9 @@ if (!SITE.showArchives) {
   return Astro.redirect("/404");
 }
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getCollection("blog", ({ data }) =>
+  env.ENVIRONMENT == "PROD" ? !data.draft : true
+);
 
 const MonthMap: Record<string, string> = {
   "1": "January",
