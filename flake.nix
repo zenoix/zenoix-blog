@@ -40,6 +40,8 @@
                 # https://devenv.sh/reference/options/
                 packages = [ ];
 
+                env.ENVIRONMENT = "WRITING";
+
                 languages = {
                   javascript = {
                     enable = true;
