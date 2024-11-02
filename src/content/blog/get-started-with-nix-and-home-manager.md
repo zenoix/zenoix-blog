@@ -9,7 +9,7 @@ draft: true # Set this to 'first' when publishing
 tags:  # Tags of the post. default = others
   - nix
   - tools
-description: 
+description: TODO
 ---
 
 You might've heard of this thing called Nix a lot recently and how it promises a declarative, reproducible, and unbreakable package environment. From first-hand experience, these promises are real. Using Nix has given me so much more confidence during development that nothing will screw up, and if I want to share my environments with others, they'll get exactly what I designed. If you want to learn more of the benefits of using Nix, check out [what the official documentation says](https://nix.dev/#what-can-you-do-with-nix).
