@@ -115,6 +115,6 @@ Not quite. The main differences are that you are writing in a normal Python or R
 
 ## Thanks For Reading
 
-Thanks for making it this far. I hope I've convinced you to reconsider using notebooks so often from now on. If you disagree with some of my points, feel free to let me know by emailing me. I am keen to discuss the topic more and maybe if you're convincing enough, I might eveh end up believing notebooks are the greatest thing ever created.
+Thanks for making it this far. I hope I've convinced you to reconsider using notebooks so often from now on. If you disagree with some of my points, feel free to let me know by emailing me. I am keen to discuss the topic more and maybe if you're convincing enough, I might even end up believing notebooks are the greatest thing ever created.
 
 Lastly, check out [Joel Grus' talk on why he doesn't like notebooks](https://www.youtube.com/watch?v=7jiPeIFXb6U). Joel goes through some of the topics I discussed and more in an entertaining and hilarious presentation. I highly recommend it!
