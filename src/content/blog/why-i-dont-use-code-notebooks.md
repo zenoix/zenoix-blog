@@ -1,11 +1,11 @@
 ---
 title: Why I Don’t Use Code Notebooks as a Data Scientist
 # author:
-pubDatetime: 2024-11-01T11:47:32.044Z
+pubDatetime: 2024-11-02T01:52:30.631Z
 # modDatetime: 
 # slug:
 featured: true
-draft: true
+draft: false
 tags:
   - data-science
   - tools
@@ -30,18 +30,19 @@ With a notebook, you can write code in code cells and see the outputs of those c
 
 Commonly, these code cells are combined with markdown blocks. The combination of code cells and markdown blocks facilitates an interactive development environment to write code, see outputs, document logic, and tell stories all in one file.
 
-![Code running in a notebook](@assets/images/why-i-dont-use-code-notebooks/code-output-text.jpg)
+![Code with markdown in a notebook](@assets/images/why-i-dont-use-code-notebooks/code-output-text.jpg)
 
 The level of interactivity (especially for data exploration and visualisations), the increased flexibility in documentation, and the supposed ease of use are just a few reasons why notebooks are so popular. 
 
-They are also used a lot in beginner tutorials and demos. I can see the appeal of that approach: a learner sees the code and what it outputs, and they can provide a structured lesson to follow. However, this may lead some people to use it as their primary tool, potentially causing bad software development habits.
+They are also used a lot in beginner tutorials and demos. I can see the appeal of that approach: a learner sees the code and what it outputs, and they can provide a structured lesson to follow. However, this may lead some people to use it as their primary development tool, potentially causing bad software development habits.
 
 ## Why I Don’t Use Notebooks as a Data Scientist
-After all that, it sounds like notebooks make everything easy. That was what I originally thought when I started my data science journey in 2020:
+
+All that being said, it sounds like notebooks make everything easy. That was what I originally thought when I started my data science journey in 2020:
 
 > I can run code, see the outputs straight away, explain what the code is doing with markdown and images, and more. This is so cool!
 
-As I mentioned before, almost all of the data science tutorials I used employed notebooks to teach. Naturally, I followed suit. So why did I switch after 3 years of mainly using notebooks for development and data science projects? These are some of the main reasons why.
+Almost all of the data science tutorials I used to learn employed notebooks to teach. Naturally, I followed suit. So why did I switch after 3 years of mainly using notebooks for development and data science projects? These are some of the main reasons why.
 
 > [!NOTE]
  > There are other minor issues with notebooks that I won't be sharing here. These are just some of the important ones. Also, keep in mind that notebooks are useful in some situations, but it's typically more beneficial to use other tools like plain Python files in the majority of cases.
@@ -63,9 +64,9 @@ One of the most annoying aspects of notebooks is that it remembers the system's 
 > [!TIP]
 > This pretty much means that all variables and definitions are remembered throughout the lifetime of the kernel until the cells that assigned them are run again (overwriting them) or if the kernel is restarted (the state is lost).
 
-This causes frustrating situations, especially for prototyping where the code changes quickly and frequently. It is way too easy to get the wrong results or bugs to appear if you forget which cells have run before and the values of every variable. 
+This causes frustration, especially for prototyping where the code changes quickly and frequently. It is way too easy to get the wrong results or bugs to appear if you forget which cells have run before and the values of every variable. 
 
-Another situation that occurs more often than you'd think is when a cell is modified but was not run. This leads to the false impression that cells that run in the future will be affected by the changes or that the output of the code cell came from that update and not the previous code.
+Another situation that occurs more often than you'd think is when a cell is modified but not run. This leads to the false impression that cells that run in the future will be affected by the changes or that the output of the code cell came from that update and not the previous code.
 
 ![Image showing modified but not run cell](@assets/images/why-i-dont-use-code-notebooks/state.jpg)
 
@@ -73,9 +74,9 @@ All these lead to a not very scientific data science project. On the other hand,
 
 ### Best Practices? Never Heard of Her
 
-Continuing on the ideas explored in the previous two points, with notebooks, it's easy to develop bad habits or ignore good habits. I strongly believe that even as data scientists, we should be following software development best practices. However, typically notebook-based projects aren't modular nor very robust, and the use of cells discourages the use of good coding habits like writing functions, classes, using inheritance, etc. Overall, the code quality due to using notebooks is typically poorer.
+Continuing on with the ideas explored in the previous two points, with notebooks, it's easy to develop bad habits or ignore good habits. I strongly believe that even as data scientists, we should be following software development best practices. However, typically notebook-based projects aren't modular nor very robust, and the use of cells discourages the use of good coding habits like writing functions, classes, using inheritance, etc. Overall, the code quality due to using notebooks is typically poorer.
 
-One major aspect of software development is testing. Making sure that code works as expected and does not break is very important. Notebooks don't allow for easy testing that say writing a data science project as modules and libraries can.
+One major aspect of software development is testing. Making sure that code works as expected and does not break is very important. Notebooks don't allow for easy testing that data science project written as modules and libraries can.
 
 There are also a lot of software development basics that get lost when people primarily use notebooks. Topics such as version control, linting, formatting, software design patterns, virtual environments, using the command line, and more are typically abstracted, or the opportunities to learn about them don't arise when only using notebooks. 
 
@@ -92,6 +93,7 @@ The vast majority of the time, I write my data science in plain Python or R scri
 Now, I'm not telling you that to do data science efficiently, you need to use Neovim. You should use the text editor you're most familiar with. For me, that's Neovim; for you, it may be VSCode, sublime text, or something else. The main point is that you should use Python or R files instead of code notebooks.
 
 However, you may be asking the following:
+
 > What if I still want to be able to run bits of code interactively and see the outputs?
 
 That's when you combine the plain Python or R file with a REPL. I use [Vigemus' iron.nvim](https://github.com/Vigemus/iron.nvim) in Neovim to send bits of code at a time, like I am demonstrating below:
@@ -113,6 +115,6 @@ Not quite. The main differences are that you are writing in a normal Python or R
 
 ## Thanks For Reading
 
-Thanks for making it this far. I hope I've convinced you to reconsider using notebooks so often from now on. If you disagree with some of my points, feel free to let me know by emailing me. I am keen to discuss the topic more and maybe if you're convincing enough, I might end up believing notebooks are the greatest thing ever created.
+Thanks for making it this far. I hope I've convinced you to reconsider using notebooks so often from now on. If you disagree with some of my points, feel free to let me know by emailing me. I am keen to discuss the topic more and maybe if you're convincing enough, I might eveh end up believing notebooks are the greatest thing ever created.
 
-Also, check out [Joel Grus' talk on why he doesn't like notebooks](https://www.youtube.com/watch?v=7jiPeIFXb6U). Joel goes through some of the topics I discussed and more in an entertaining and comedic presentation. I highly recommend it!
+Lastly, check out [Joel Grus' talk on why he doesn't like notebooks](https://www.youtube.com/watch?v=7jiPeIFXb6U). Joel goes through some of the topics I discussed and more in an entertaining and hilarious presentation. I highly recommend it!
