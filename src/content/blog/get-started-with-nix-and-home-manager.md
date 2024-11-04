@@ -298,7 +298,7 @@ home.packages = [
 ]
 ```
 
-This tells Home Manager to install git from `pkgs`. It can also be written like this:
+This tells Home Manager to install go from `pkgs`. It can also be written like this:
 
 ```nix
 home.packages = with pkgs; [
