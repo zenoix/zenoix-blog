@@ -146,7 +146,7 @@ experimental-features = nix-command flakes
 
 You should now be able to use Flakes. You can check with:
 
-```
+```bash
 $ nix flake --help
 ```
 
@@ -154,7 +154,7 @@ $ nix flake --help
 
 To get started with using Nix and Home Manager, we want to first temporarily install Home Manager into a temporary Nix shell. To do this, use the following command:
 
-```
+```bash
 $ nix-shell -p home-manager
 ```
 
@@ -169,13 +169,13 @@ In the new shell, you should be able to use `home-manager --version` to make sur
 
 Next, let's figure out where to store our configurations. By default, it uses `~/.config/home-manager/`. If that's fine with you, you can use the following command to initialise the first generation of your configurations:
 
-```
+```bash
 $ home-manager init
 ```
 
 However, if you're like me and want to store your configurations somewhere else, figure out where you want to store them. For this tutorial, I'll use `~/mySpecialConfig/` which means we'll need to add that path to the `home-manager init` command:
 
-```
+```bash
 $ home-manager init ~/mySpecialConfig/
 ```
 
@@ -183,7 +183,7 @@ $ home-manager init ~/mySpecialConfig/
 
 After you've run the initialisation command, change directories to where your configurations were placed. You should see two files if you have Flakes enabled:
 
-```
+```bash
 $ cd ~/mySpecialConfig
 $ ls
 .
@@ -300,7 +300,7 @@ home.packages = [
 
 This tells Home Manager to install git from `pkgs`. It can also be written like this:
 
-```
+```nix
 home.packages = with pkgs; [
   go
 ]
@@ -353,7 +353,7 @@ Altogether, you should have something looking like this:
 
 Let's switch our user configuration to the one we just created. Use the following command to switch to the new Home Manager configuration we just created (substituting the path to the flake directory):
 
-```
+```bash
 $ home-manager switch --flake ~/mySpecialConfig/
 ```
 
@@ -362,7 +362,7 @@ $ home-manager switch --flake ~/mySpecialConfig/
 
 After a bit, you should now have go and git installed and a `gitconfig`. We have also installed Home Manager in the user's environment. So we can use `exit` to leave the temporary shell. Check that everything went well by using the following four commands:
 
-```
+```bash
 $ go version
 $ git --version
 $ cat ~/.config/git/config
@@ -381,7 +381,7 @@ Let's say you update your configuration or you update the inputs to your flake w
 
 This fact also allows for rollbacks of your system. Say you want to go back to a previous generation of your Home Manager configuration; you can do that easily because your old packages are still there. To do so, run the following command to get the history of your Home Manager configurations:
 
-```
+```bash
 $ home-manager generations
 2024-11-04 01:16 : id 739 -> /nix/store/yrjcvrc7h37nx44fcclh0h4qcrj6dfvn-home-manager-generation
 2024-11-02 15:54 : id 738 -> /nix/store/5k7d0x909p1zjxrqc0nd3ggv93dlb7iw-home-manager-generation
@@ -398,7 +398,7 @@ Then choose the store path of the generation you want to roll back to. For examp
 
 Lastly, activate that generation by running the `activate` script in the store path.
 
-```
+```bash
 $ /nix/store/qf4zbz134i1gjaidsvd79z0ml4wryknd-home-manager-generation/activate
 ```
 
