@@ -43,7 +43,7 @@ The Nix package manager and the Nixpkgs repository are *the* best package manage
 
 Enter the graph that everyone uses when talking about Nixpkgs (note the top right corner):
 
-![Graph showing the number of packages and the number of fresh packages](@assets/images/get-started-with-nix-and-home-manager/package-size-freshness.svg)
+![Graph showing the number of packages and the number of fresh packages](@assets/images/get-started-with-nix-and-home-manager/map_repo_size_fresh.svg)
 
 >[!NOTE]
 >From now on, I'll use "Nix" to refer to both the package manager and the package repositories (a.k.a. the software distribution system). When I'm specifically talking about the language, I'll use "Nix language.".
