@@ -148,8 +148,8 @@ export const SOCIALS: SocialObjects = [
     },
     {
         name: "Mastodon",
-        href: "",
+        href: "https://techhub.social/@zenoix",
         linkTitle: `Find ${SITE.author.split(" ")[0]} on Mastodon`,
-        active: false,
+        active: true,
     },
 ];
