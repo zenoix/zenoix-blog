@@ -4,7 +4,7 @@ title: Why I Don’t Use Code Notebooks as a Data Scientist
 pubDatetime: 2024-11-02T01:52:30.631Z
 # modDatetime: 
 # slug:
-featured: true
+featured: false
 draft: false
 tags:
   - data-science
