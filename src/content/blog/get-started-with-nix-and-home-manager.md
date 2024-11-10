@@ -2,7 +2,7 @@
 title: Get Started with Nix and Home Manager
 pubDatetime: 2024-11-04T01:14:31.088Z
 modDatetime: 2024-11-04T01:15:21Z
-featured: false
+featured: true
 draft: false
 tags:
   - nix
