@@ -63,6 +63,19 @@ That means you can try or use programs without having it permanently bloating yo
 
 Why did I show the use of Nix's ephemeral shell? Well, that's because it's the basis of the development environments I'm introducing today. You can have an ephemeral shell with a set of packages for one project and another ephemeral shell with a different set of packages without the two conflicting.
 
+Another advantage you get is due to the reproducibility that is intrinsic to how Nix works when using flakes. You can create a `flake.nix` (and corresponding `flake.lock`) file, then share that to other members of your project through something like a GitHub repository. They can then use that to completely reproduce the development environment. Why is that useful? Well, it means that every member of the team has full confidence that the packages they're using to develop the software is the same as everyone else's. No more missing packages or differing versions. 
+
+Overall, using Nix significantly reduces the hassle of coordinating each member's development environment and provides assurance that everyone's environment is correct.
+
+## Real World Example Of Using Nix For Dev Environments
+
+[Bellroy](https://bellroy.com), an Australian company that makes and sells bags, wallets, and other accessories, uses Nix for their development environments. They use Nix for their development environments to ensure that they are reproducible across different team members' development machines. One nice perk they found was that by distributing the instructions to build development environments using a `shell.nix` file (more on this in the next section), it was
+
+> a great way to get started because it doesn’t ask developers to radically change their workflows, and allows them to trial Nix at their own pace.
+
+By introducing Nix to developers using Nix development environments, it allows the adoption of Nix (which has a reputation for being complicated) at a company much easier.
+
+You can find out more about how Bellroy uses Nix [in their post here](https://exploring-better-ways.bellroy.com/the-history-of-nix-at-bellroy.html).
 
 ## Real World Example Of Using Nix For Dev Environments
 
