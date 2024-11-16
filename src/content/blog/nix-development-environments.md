@@ -77,9 +77,129 @@ By introducing Nix to developers using Nix development environments, it allows t
 
 You can find out more about how Bellroy uses Nix [in their post here](https://exploring-better-ways.bellroy.com/the-history-of-nix-at-bellroy.html).
 
-## Real World Example Of Using Nix For Dev Environments
-
 ## Basic Nix Dev Shell
 
-## Devenv and Direnv for Easier Dev Environments
+### Shell.nix Approach
+
+Let's start with creating a basic development environment using a `shell.nix` file. First, create the `shell.nix` file, preferably in your project directory.
+
+```bash
+$ touch shell.nix
+```
+
+After opening it up with your preferred text editor, add the following code to the file:
+
+```nix
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell {
+
+}
+```
+
+The first part of the code is a function that either takes in a version of `pkgs` as input, or it uses your system (or user) `nixpkgs`. The second part (after the `:`) is another function called `mkShell` that is returned from `pkgs` from the first function.
+
+> [!TIP]
+> If that's confusing, don't worry, we'll move onto an easier to understand method of implementing development environments soon.
+
+Next, you'll probably want to add packages that your environment will use. This can easily be done by adding `packages` into `mkShell`. 
+
+Say we want to make a Python environment with numpy and pandas, and the bat CLI tool. We'd do something like the following:
+
+```nix
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell {
+  packages = with pkgs; [
+    bat
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        pandas
+      ]
+    ))
+  ];
+}
+```
+
+We can also run commands when we enter the shell by using `shellHook`:
+
+```nix
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell {
+  packages = with pkgs; [
+    bat
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        pandas
+      ]
+    ))
+  ];
+
+  shellHook = ''
+    bat --decorations never README.md
+  '';
+}
+```
+
+In this case, we're using the shell's bat to print out the readme with some nice colours.
+
+You can also add environment variables by adding key-value pairs. For instance, an environment variable to indicate we're in a development environment variable and not production:
+
+```nix
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell {
+  packages = with pkgs; [
+    bat
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        pandas
+      ]
+    ))
+  ];
+
+  shellHook = ''
+    bat --decorations never README.md
+  '';
+
+  ENV = "DEV";
+}
+```
+
+> [!NOTE]
+> The key must not be an option of `mkShell` otherwise it'll be parsed as one and may cause issues.
+
+We now have a simple development environment set up. Let's try it out by using running the following command:
+
+```bash
+$ nix-shell
+```
+
+![Entering the shell](@assets/images/nix-development-environments/entering-shell-shellnix.jpg)
+
+We see that the readme file got "batted" out with a nice coloured heading. Our packages are also all here:
+
+![Shell packages are installed](@assets/images/nix-development-environments/packages-shellnix.jpg)
+
+And the `ENV` environment variable is set:
+
+![Env vars are set](@assets/images/nix-development-environments/env-var-shellnix.jpg)
+
+If we leave the shell with `exit`, we see that we lose what we've set in the `shell.nix` file:
+
+![Shell is reverted when exited](@assets/images/nix-development-environments/exit-shell-shellnix.jpg)
+
+That was pretty easy wasn't it?
+
+### Flake Approach
+
+## Devbox and Direnv for Easier Dev Environments
 
