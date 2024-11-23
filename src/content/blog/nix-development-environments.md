@@ -199,7 +199,186 @@ If we leave the shell with `exit`, we see that we lose what we've set in the `sh
 
 That was pretty easy wasn't it?
 
-### Flake Approach
+### Flakes Approach
+
+Let's improve how we create, use, and share development environments by using Nix flakes. 
+
+>[!TIP]
+>Flakes bring a lot of benefits when it comes to development environments. A major one is making pinning of dependencies much easier by using a `flake.lock`.
+
+To go from the `shell.nix` we created earlier, it's quite easy. Here's a reminder of what the `shell.nix` file looked like:
+
+```nix
+# shell.nix
+
+{
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShell {
+  packages = with pkgs; [
+    bat
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        pandas
+      ]
+    ))
+  ];
+
+  shellHook = ''
+    bat --decorations never README.md
+  '';
+
+  ENV = "DEV";
+}
+```
+
+For we need to create a `flake.nix` in the project directory (for example, by using `touch flake.nix`). We can then start building out `flake.nix` file.
+
+Let's start with an empty flake:
+
+```nix
+# flake.nix
+
+{
+
+}
+```
+
+To this, let's add a description for the flake. In this case, I'll use "Python project development environment flake":
+
+```nix
+{
+  description = "Python project development environment flake";
+}
+```
+
+Next, we'll add the `inputs` to the flake. The important one is where to get the nix packages from (similar to the `pkgs ? import <nixpkgs> { }` line from before). However, this time we'll also add `systems` which will be used to make sure we can distribute this flake to different kinds of system architectures (like `x86_64-linux` and `aarch64-darwin`) easily.
+
+```nix
+{
+  description = "Python project development environment flake";
+  
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default";
+  };
+};
+```
+
+The last section of the flake are the `outputs`. First, we grab `inputs` as the inputs of the `outputs` function.  These are `self`, `nixpkgs`, and `system` as so:
+
+```nix
+{
+  description = "Python project development environment flake";
+  
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default";
+  };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      systems,
+    }:
+	
+};
+```
+
+We'll then use set up the boilerplate for the development environments for every system architecture:
+
+```nix
+{
+  description = "Python project development environment flake";
+  
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default";
+  };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      systems,
+    }:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in
+    {
+      devShells = forEachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+		  default = ...
+        }
+      );
+};
+```
+
+What did we just add? You can pretty much think of what we just added as looping over each system and setting the default development shell and `pkgs` value based on the system. 
+
+The last thing to do is actually design the shell as we did in the `shell.nix` file. This stage is easy. Just grab the `pkgs.mkShell` function and its body and place it after `default = `:
+
+```nix
+{
+  description = "Python project development environment flake";
+  
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default";
+  };
+  
+  outputs =
+    {
+      self,
+      nixpkgs,
+      systems,
+    }:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in
+    {
+      devShells = forEachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              bat
+              (python3.withPackages (
+                ps: with ps; [
+                  numpy
+                  pandas
+                ]
+              ))
+            ];
+
+            shellHook = ''
+              bat --decorations never README.md
+            '';
+
+            ENV = "DEV";
+          };
+        }
+      );
+    };
+}
+```
+
+We're now done with the development environment! To activate it, we use a different command:
+
+```bash
+$ nix develop
+```
+
+We then get the exact same shell as we did using `shell.nix`, but with the benefits of using flakes. You can now share the `flake.nix` and `flake.lock` files to your team and have the confidence that everyone will have the same development environment.
 
 ## Devbox and Direnv for Easier Dev Environments
 
