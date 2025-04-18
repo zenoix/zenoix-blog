@@ -21,7 +21,7 @@ The main tools I use for programming are:
 
 As you might be able to tell, I like living in the terminal when I code. You can find my complete setup and configurations in my [GitHub repo](https://github.com/zenoix/walnut-environment).
 
-I use NixOS on all my personal devices and Ubuntu+Nix+Home-manager on my work laptop (they don't allow anything other than Windows sadge). That allows my configurations to be as reproducible and transferable as they can.
+I use NixOS on all my personal devices and MacOS+Nix+Home-manager on my work laptop. That allows my configurations to be as reproducible and transferable as they can.
 
 My favourite language to write is Golang, but I use Python most, and that's what I'm most comfortable with.
 
