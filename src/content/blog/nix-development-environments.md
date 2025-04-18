@@ -1,9 +1,9 @@
 ---
 title: Nix Development Environments for Data Science
-pubDatetime: 1970-01-01T00:00:00.000Z
-modDatetime: 
+pubDatetime: 2025-04-18T16:24:03+12:00
+modDatetime: 2025-04-18T04:26:39Z
 featured: false
-draft: true
+draft: false
 tags:
   - data-science
   - tools
@@ -16,6 +16,8 @@ I've always believed that the field of data science needs to learn from software
 For example, we might have Windows users, MacOS users, and Linux users all working on the same project on their local machines and configuring everything based on their operating system. This alone is a huge nightmare. Code might work on one operating system/architecture but not on others, dependencies might be different, Windows users might use `\` for filepaths, deployments can fail, and so on. 
 
 Now, I don't mind people using the tools that they're used to, but sometimes these minor setbacks add up and cause massive inefficiencies. Due to this, I've decided to write this blog post about implementing reproducible and shareable development environments using Nix (check out my [introduction to Nix](https://zenoix.com/posts/get-started-with-nix-and-home-manager) if you're not familiar with Nix). By using Nix, you can reduce the hassle of cross-machine development exponentially. 
+
+If you're a normal person (I consider those who don't want to write or look at Nix code to be normal), then you can still get the benefits of having reproducible environments using Devbox. I write about it [later in this post](#devbox-and-direnv-for-easier-dev-environments) so skip to that section if you want.
 
 >[!NOTE]
 > Using Nix on Windows means that WSL2 will need to be used and so those who develop on Windows will have the hardest time transitioning. That being said, I believe that all data scientists need to be somewhat familiar with Linux and using a shell, so they might as well start learning it now.
@@ -35,11 +37,11 @@ A command line shell specifically, is a program that allows the user to interact
 
 Here's a simple example of what you can do with a command line shell. Let's say you want to install and use [bat](https://github.com/sharkdp/bat) to print out a file with pretty syntax highlighting. 
 
-To interact with a command line shell, you would typically use a terminal emulator. A terminal emulator is a graphical program that you can use to interact with the shell. In my case, I will be using running zsh in [the kitty terminal](https://github.com/kovidgoyal/kitty).
+To interact with a command line shell, you would typically use a terminal emulator. A terminal emulator is a graphical program that you can use to interact with the shell. In my case, I will be using running zsh in [the Ghostty terminal](https://ghostty.org/).
 
-<!-- Insert image of zsh in kitty -->
+![Zsh in Ghostty](@assets/images/nix-development-environments/ghostty.jpg)
 
-Kitty is the window you are looking at and the `>` prompt you can see is the prompt to my zsh shell. That is where I can enter commands to run. Let's install bat using the following command:
+Ghostty is the window you are looking at and the `>` prompt you can see is the prompt to my zsh shell. That is where I can enter commands to run. Let's install bat using the following command:
 
 ```bash
 $ nix-shell -p bat
@@ -47,15 +49,15 @@ $ nix-shell -p bat
 
 What happens when I run that line? This is an oversimplification, but what happens is that my shell (zsh) reads the input and parses it. It then checks if the input is valid by checking if `nix-shell` is a valid command and if `-p bat` is a valid option and value for that option. If it is all valid, the shell will communicate what you wanted with something called the kernel. The kernel will process what you asked for and return an output that your shell can display.
 
-<!-- Insert image of bat being installed -->
+![Installing bat](@assets/images/nix-development-environments/installing-bat.jpg)
 
-In this case, as I'm using `nix-shell`, it's actually creating an ephemeral (temporary) shell with bat installed inside the original shell. We can test it by trying to run `bat` on a file.
+In this case, as I'm using `nix-shell -p`, it's actually creating an ephemeral (temporary) shell with bat installed inside the original shell. We can test it by trying to run `bat` on a file.
 
-<!-- Insert image of running bat in a nix shell -->
+![Running bat in Nix Shell](@assets/images/nix-development-environments/running-bat-in-nix-shell.jpg)
 
 In this case, the ephemeral shell does the parsing, validation, and communication with the kernel to run bat on the file that exists on the system. A cool thing about using `nix-shell` for ephemeral shells is that when you exit that shell, the programs won't be accessible with your original shell.
 
-<!-- Insert image of running bat outside the ephemeral shell -->
+![Bat not found in normal shell](@assets/images/nix-development-environments/bat-not-found.jpg)
 
 That means you can try or use programs without having it permanently bloating your user space. Handy isn't it?
 
@@ -253,7 +255,7 @@ To this, let's add a description for the flake. In this case, I'll use "Python p
 }
 ```
 
-Next, we'll add the `inputs` to the flake. The important one is where to get the nix packages from (similar to the `pkgs ? import <nixpkgs> { }` line from before). However, this time we'll also add `systems` which will be used to make sure we can distribute this flake to different kinds of system architectures (like `x86_64-linux` and `aarch64-darwin`) easily.
+Next, we'll add the `inputs` to the flake. The important one is where to get the Nix packages from (similar to the `pkgs ? import <nixpkgs> { }` line from before). However, this time we'll also add `systems` which will be used to make sure we can distribute this flake to different kinds of system architectures (like `x86_64-linux` and `aarch64-darwin`) easily.
 
 ```nix
 {
@@ -380,5 +382,202 @@ $ nix develop
 
 We then get the exact same shell as we did using `shell.nix`, but with the benefits of using flakes. You can now share the `flake.nix` and `flake.lock` files to your team and have the confidence that everyone will have the same development environment.
 
-## Devbox and Direnv for Easier Dev Environments
+## Easier Dev Environments with Devbox and Direnv
+
+### Devbox
+
+Now, I completely understand why people might not want to install Nix onto their machines or touch Nix code (it can be kind of gross). Luckily, we can get the benefits of reproducible development environments without needing to install Nix or write Nix code directly. 
+
+We can do this using [Devbox](https://www.jetify.com/devbox) which handles the setting up of development environments for you. It uses Nix behind the scenes so you can still get the benefits that Nix brings.
+
+First you'll want to install Devbox onto your system. If you're using Nix, you can easily install it by adding `pkgs.devbox` to your configuration. Otherwise, follow the instruction listed in the [Devbox installation guide](https://www.jetify.com/docs/devbox/installing_devbox/?install-method=linux).
+
+> [!NOTE]
+> Devbox has a lot of features, therefore I'll only be showing you the basics for setting up a project. For more information, have a read of Devbox's documentation.
+
+Let's create a new directory for our project and initialise Devbox by running the following commands:
+
+```shell
+$ mkdir devbox-demo && cd devbox-demo
+$ devbox init
+```
+
+You should then see a `devbox.json` file appear in your project directory. Having a look at that json file, we see the following:
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
+  "packages": [],
+  "shell": {
+    "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
+    "scripts": {
+      "test": ["echo \"Error: no test specified\" && exit 1"]
+    }
+  }
+}
+```
+
+That should be easy enough to understand: `packages` are the packages of the development environment, `init_hook` are commands that are run when the development environment is activated, and `scripts` are custom scripts/commands you can add to the development environment's shell.
+
+Let's recreate the development environment from the flakes approach.
+
+#### Adding Packages
+
+There are two main ways to install packages with devbox. The first is by adding them to the `packages` section of `devbox.json`. For example, installing `bat` is as simple as adding `"bat@latest"` to `packages`.
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6/.schema/devbox.schema.json",
+  "packages": ["bat@latest"],
+  "shell": {
+    "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
+    "scripts": {
+      "test": ["echo \"Error: no test specified\" && exit 1"]
+    }
+  }
+}
+```
+
+The second way to install packages is to use the devbox command line interface through the `devbox add` command. I'll show you how to install Python 3, numpy, and pandas with the command line interface. It's also seems like a good time to show how to install specific versions of something. You may have noticed that for bat, I appended `@latest`. This tells devbox to find the latest version of bat that it can. We'll use this to install Python 3.12 by appending `@3.12` to the end:
+
+```shell
+$ devbox add python@3.12 python312Packages.pandas python312Packages.numpy
+```
+
+This installs Python 3.12 in addition to latest pandas and numpy for that Python version.
+
+>[!info]
+>If you do not state a version, devbox will assume you want the latest version available.
+
+>[!TIP]
+>You can find all available devbox packages and versions by visiting [www.nixhub.io](https://www.nixhub.io/) or by running the `devbox search <package_name>` command.
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6-c0331c7/.schema/devbox.schema.json",
+  "packages": [
+    "bat@latest",
+    "python@3.12",
+    "python312Packages.pandas@latest",
+    "python312Packages.numpy@latest"
+  ],
+  "shell": {
+    "init_hook": ["echo 'Welcome to devbox!' > /dev/null"],
+    "scripts": {
+      "test": ["echo \"Error: no test specified\" && exit 1"]
+    }
+  }
+}
+```
+
+Boom! We've now got bat, Python 3.12, pandas, and numpy added to our devbox environment.
+
+#### Shell Hook
+
+Next, we add our shell hook. Previously we did `bat --decorations never README.md` so let's use the same one. Adding shell hooks is as easy as adding the command to the `init_hook` list in the `shell` section of the devbox json:
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6-c0331c7/.schema/devbox.schema.json",
+  "packages": [
+    "bat@latest",
+    "python@3.12",
+    "python312Packages.pandas@latest",
+    "python312Packages.numpy@latest"
+  ],
+  "shell": {
+    "init_hook": ["bat --decorations never README.md"],
+    "scripts": {
+      "test": ["echo \"Error: no test specified\" && exit 1"]
+    }
+  }
+}
+```
+
+That's it! Now every time we enter the development environment, we get `bat` printing out our readme file.
+
+#### Environment Variables
+
+Environment variables are also easy to add. First we creating a new section called `env` in `devbox.json` that will hold the environment variables we want to set in our development environment:
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.6-c0331c7/.schema/devbox.schema.json",
+  "packages": [
+    "bat@latest",
+    "python@3.12",
+    "python312Packages.pandas@latest",
+    "python312Packages.numpy@latest"
+  ],
+  "shell": {
+    "init_hook": ["bat --decorations never README.md"],
+    "scripts": {
+      "test": ["echo \"Error: no test specified\" && exit 1"]
+    }
+  },
+  "env": {}
+}
+```
+
+To that, we add the environment variables as key-value pairs in the mapping:
+
+```json
+  "env": {
+    "ENV": "DEV"
+  }
+```
+
+We've now set the environment variable `ENV` to `"DEV"`.
+
+>[!tip]
+>You can also source environment variables from a file like a `.env` file. To do so, add a new section to your `devbox.json` as follows:
+>```json
+>{
+>    "env_from": "path/to/.env"
+>}
+>```
+
+#### Activating the Development Environment
+
+Our devbox environment is now complete. Activating and using it is as simple as running the following command:
+
+```shell
+$ devbox shell
+```
+
+> [!note]
+> The first time activating your shell may take a bit of time as it's installing and linking the packages you set. After the first time, entering the shell should take significantly less time (unless you edit `packages` in the devbox json).
+
+You should now be in the new development environment. You can test it by trying any of the things we added to the environment. For example, running `echo $ENV` should return `DEV`. You may also notice that devbox has created a Python virtual environment for us. How convenient!
+
+>[!info]
+> The other programs, aliases, configurations, etc. of your shell should still be available unless you've overridden them with your devbox configuration. 
+
+To exit the shell, all you need to do is run the `exit` command.
+
+#### Sharing the Development Environment
+
+After activating your devbox environment for the first time, you should notice that you have a new file called `devbox.lock`. This file should be shared (in addition to `devbox.json`) if you want others to reproduce your development environment (e.g. in a GitHub repo). 
+
+### Incorporating Direnv in the Devbox Environment
+
+You might find the idea of running `devbox shell` every time you want to enter your development environment a bit tedious (I know I do). Luckily, devbox can be integrated with [direnv](https://direnv.net/) which can automatically activate your devbox environment whenever you enter the directory. 
+
+We first start by generating a `.envrc` file using the following command:
+
+```shell
+$ devbox generate direnv
+```
+
+If you have direnv installed (through Nix or some other means), you should notice that your devbox environment gets automatically activated whenever you change into your project directory.
+
+## Time to Wrap Up!
+
+I've only introduced a little bit of what can be done with Nix shells and devbox. I'd encourage everyone to do a little bit more exploring into how Nix and devbox could help you with your development workflows. If you're struggling for ideas, I would recommend looking into using devbox shell scripts or using devbox in CI/CD pipelines.
+
+
+Anyways, we've covered a lot today. Hopefully you've learnt what a shell is, why having separate development environments is so useful, and some tools to make development environment managing a little bit easier and reproducible. Thanks for reading this little post by someone who wants to make development more fun for everyone.
+
+
+ 
 
