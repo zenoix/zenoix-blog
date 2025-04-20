@@ -446,7 +446,7 @@ $ devbox add python@3.12 python312Packages.pandas python312Packages.numpy
 
 This installs Python 3.12 in addition to latest pandas and numpy for that Python version.
 
->[!info]
+>[!note]
 >If you do not state a version, devbox will assume you want the latest version available.
 
 >[!TIP]
