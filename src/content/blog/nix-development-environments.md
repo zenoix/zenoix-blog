@@ -1,7 +1,7 @@
 ---
 title: Nix Development Environments for Data Science
 pubDatetime: 2025-04-18T16:24:03+12:00
-modDatetime: 2025-04-18T04:26:39Z
+modDatetime: 2025-05-04T03:33:55Z
 featured: false
 draft: false
 tags:
@@ -446,7 +446,7 @@ $ devbox add python@3.12 python312Packages.pandas python312Packages.numpy
 
 This installs Python 3.12 in addition to latest pandas and numpy for that Python version.
 
->[!info]
+>[!note]
 >If you do not state a version, devbox will assume you want the latest version available.
 
 >[!TIP]
