@@ -38,7 +38,7 @@
             modules = [
               {
                 # https://devenv.sh/reference/options/
-                packages = [ ];
+                packages = [ pkgs.pre-commit ];
 
                 env.ENVIRONMENT = "WRITING";
 

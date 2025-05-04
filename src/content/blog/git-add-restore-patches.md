@@ -1,11 +1,11 @@
 ---
 title: Using Patches When Adding or Restoring with Git
 # author: Author of the post. default = SITE.author
-pubDatetime: 1970-02-01T00:00:00.001Z # Published datetime in ISO 8601 format (use date -Iseconds). required 
-modDatetime: # Modified datetime in ISO 8601 format. (only add this property when a blog post is modified)
+pubDatetime: 2025-05-04T04:25:50Z
+modDatetime: 2025-05-04T04:25:58Z
 # slug: Slug for the post. This field is optional but cannot be an empty string. default = slugified file name
 featured: false # Whether or not to display this post as featured. default = false
-draft: first # Set this to 'first' when publishing
+draft: false
 tags:  # Tags of the post. default = others
   - git
   - tips&tricks
@@ -107,4 +107,3 @@ Today, you have hopefully learnt how you can use patches when staging, restoring
 I've only shown what the `y`, `n`, and `s` options do in the example, but I highly recommend you to explore what the other options do. The `e` option is particularly useful when Git does not or is unable to split a hunk.
 
 Anyways, thanks for reading and I hope to see you in my next post!
-
