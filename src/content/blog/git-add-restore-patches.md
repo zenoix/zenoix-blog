@@ -89,7 +89,7 @@ Let's check out what's staged by running `git diff --cached`:
 
 ![Running git diff --cached to make sure only our chosen changes are staged](@assets/images/git-add-restore-patches/git-diff-cached.png)
 
-You'll notice that the only parts that are staged for the commit are related to adding th `override` decorator. We can also make such that we haven't lost the other changes we've made by running `git diff`:
+You'll notice that the only parts that are staged for the commit are related to adding the `override` decorator. We can also make such that we haven't lost the other changes we've made by running `git diff`:
 
 ![Running git diff to make sure none of our other changes are lost](@assets/images/git-add-restore-patches/git-diff.png)
 
